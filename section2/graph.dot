@@ -1,0 +1,34 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_eip.lb (expand)" [label = "aws_eip.lb", shape = "box"]
+		"[root] aws_instance.myec2 (expand)" [label = "aws_instance.myec2", shape = "box"]
+		"[root] aws_security_group.allow_tls (expand)" [label = "aws_security_group.allow_tls", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] var.ami_id" [label = "var.ami_id", shape = "note"]
+		"[root] var.az" [label = "var.az", shape = "note"]
+		"[root] var.ec2_tag_name" [label = "var.ec2_tag_name", shape = "note"]
+		"[root] var.elb_name" [label = "var.elb_name", shape = "note"]
+		"[root] var.elb_names" [label = "var.elb_names", shape = "note"]
+		"[root] var.list" [label = "var.list", shape = "note"]
+		"[root] var.tm" [label = "var.tm", shape = "note"]
+		"[root] var.types" [label = "var.types", shape = "note"]
+		"[root] var.vpn_ip" [label = "var.vpn_ip", shape = "note"]
+		"[root] aws_eip.lb (expand)" -> "[root] aws_instance.myec2 (expand)"
+		"[root] aws_instance.myec2 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_security_group.allow_tls (expand)" -> "[root] aws_eip.lb (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_security_group.allow_tls (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+		"[root] root" -> "[root] var.ami_id"
+		"[root] root" -> "[root] var.az"
+		"[root] root" -> "[root] var.ec2_tag_name"
+		"[root] root" -> "[root] var.elb_name"
+		"[root] root" -> "[root] var.elb_names"
+		"[root] root" -> "[root] var.list"
+		"[root] root" -> "[root] var.tm"
+		"[root] root" -> "[root] var.types"
+		"[root] root" -> "[root] var.vpn_ip"
+	}
+}
+
